@@ -6,7 +6,7 @@
         {{-- Dekorasi Background Belakang (Optional) --}}
         <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
-        <div class="container mx-auto relative z-10">
+        <div class="container mx-auto relative z-10" id="contact">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
 
                 {{-- Kolom Kiri: Headline --}}
@@ -24,23 +24,29 @@
                 </div>
 
                 {{-- Kolom Kanan: Form --}}
-                <form class="lg:w-6/12 w-full bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700 shadow-2xl">
+                <form method="POST" action="{{ route('messages.store') }}" class="lg:w-6/12 w-full bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700 shadow-2xl">
+                    @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         {{-- Nama --}}
                         <div>
                             <label class="block text-slate-400 text-xs font-bold mb-2 uppercase">Your Name</label>
-                            <input type="text" placeholder="John Doe" class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" required>
+                            <input type="text" name="name" placeholder="John Doe" class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" required>
                         </div>
                         {{-- Email --}}
                         <div>
                             <label class="block text-slate-400 text-xs font-bold mb-2 uppercase">Your Email</label>
-                            <input type="email" placeholder="john@example.com" class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" required>
+                            <input type="email" name="email" placeholder="john@example.com" class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" required>
                         </div>
                     </div>
                     {{-- Telepon --}}
-                    <div class="mb-6">
+                    <div class="mb-4">
                         <label class="block text-slate-400 text-xs font-bold mb-2 uppercase">Phone Number</label>
-                        <input type="tel" placeholder="+62 812..." class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" required>
+                        <input type="tel" name="phone" placeholder="+62 812..." class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" required>
+                    </div>
+                    {{-- Pesan --}}
+                    <div class="mb-6">
+                        <label class="block text-slate-400 text-xs font-bold mb-2 uppercase">Your Message</label>
+                        <textarea name="content" rows="4" placeholder="Tell us about your project..." class="w-full bg-slate-900 text-white border border-slate-700 rounded py-3 px-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"></textarea>
                     </div>
                     {{-- Button --}}
                     <button type="submit" class="w-full bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-6 rounded transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-cyan-500/30">

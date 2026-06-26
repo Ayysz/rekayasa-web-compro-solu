@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function services()
     {
-        $services = Product::all()->where('category_id', 1);
+        $services = Product::where('category_id', 1)->paginate(6);
         return view('pages.solution', [
             'services' => $services,
         ]);

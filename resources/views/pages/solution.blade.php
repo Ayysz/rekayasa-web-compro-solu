@@ -40,7 +40,7 @@
                     <x-solution-card
                         :title="$solution['title']"
                         :description="$solution['description']"
-                        :image="$solution['image']"
+                        :image="asset($solution['image'])"
                         :link="$solution['link']"
                     />
                 @endforeach
@@ -49,6 +49,13 @@
             {{-- Jika data kosong --}}
             @if($services->isEmpty())
                 <p class="text-center text-slate-500 mt-10">Belum ada solusi yang tersedia.</p>
+            @endif
+
+            {{-- Pagination Links --}}
+            @if($services->hasPages())
+                <div class="mt-12 flex justify-center">
+                    {{ $services->links('vendor.pagination.dark') }}
+                </div>
             @endif
 
         </div>
