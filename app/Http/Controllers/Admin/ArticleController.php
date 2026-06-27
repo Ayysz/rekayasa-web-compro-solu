@@ -29,11 +29,12 @@ class ArticleController extends Controller
             'name' => 'required|string|max:255',
             'content' => 'required',
             'tag' => 'required|string|max:255',
-            'category_id' => 'required|integer',
+            // 'category_id' => 'required|integer',
         ]);
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        $data['category_id'] = 3; // default article category
 
         Article::create($data);
 
@@ -60,11 +61,12 @@ class ArticleController extends Controller
             'name' => 'required|string|max:255',
             'content' => 'required',
             'tag' => 'required|string|max:255',
-            'category_id' => 'required|integer',
+            // 'category_id' => 'required|integer',
         ]);
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        $data['category_id'] = 3; // default article category
 
         $article->update($data);
 
@@ -81,14 +83,15 @@ class ArticleController extends Controller
     public function exportPdf()
     {
         $articles = Article::all()->each(function ($article) {
-            $article->image = 'images\default.png';
+            $article->image = 'images/default.png';
         });
         $pdf = Pdf::loadView('admin.articles.export-pdf', compact('articles'))
-        ->setOption([
-            'isHtml5ParserEnabled' => true,
-            'isRemoteEnabled' => true,
-            'chroot' => public_path()
-        ]);
+        // ->setOption([
+        //     'isHtml5ParserEnabled' => true,
+        //     'isRemoteEnabled' => true,
+        //     'chroot' => public_path()
+        // ])
+        ;
         return $pdf->download('articles.pdf');
     }
 }

@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{ $article->id }}</td>
                     <td>
-                        <img src="{{ asset($article->image) }}" alt="{{ $article->name }}" width="400" height="270" />
+                        <img src="{{ public_path($article->image) }}" alt="{{ $article->name }}" width="200" height="135" />
                     </td>
                     <td>{{ $article->name }}</td>
                     <td>{{ $article->tag }}</td>

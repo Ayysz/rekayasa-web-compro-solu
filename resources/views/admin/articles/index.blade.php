@@ -40,6 +40,7 @@
                         <th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Judul</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Tag</th>
                         <th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Dibuat Pada</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Dibuat Oleh</th>
                         <th class="px-6 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
@@ -52,6 +53,7 @@
                                 <span class="px-2.5 py-1 bg-violet-100 text-violet-700 rounded-full text-xs font-medium">{{ $article->tag }}</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">{{ $article->created_at->format('d M Y H:i') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">Admin</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex justify-end gap-1">
                                     <a href="{{ route('admin.articles.show', $article->id) }}" class="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">
