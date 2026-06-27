@@ -11,6 +11,10 @@
       "dest": "/build/$1"
     },
     {
+      "source": "/images/(.*)",
+      "destination": "/images/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/index.php"
     }
